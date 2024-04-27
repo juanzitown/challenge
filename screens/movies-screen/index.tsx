@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-type AccountScreenProps = {};
+type MoviesScreenProps = {};
 
-export default function AccountScreen(props: AccountScreenProps) {
+export default function MoviesScreen(props: MoviesScreenProps) {
   return (
     <View style={styles.container}>
-      <Text>Account Screen</Text>
+      <Text>Movies Screen</Text>
       <StatusBar style="auto" />
     </View>
   );

@@ -1,9 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
-import HomeScreen from "./screens/home/home-screen";
+import DashboardScreen from "./screens/dashboard-screen";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AccountScreen from "./screens/account/account-screen";
+import MoviesScreen from "./screens/movies-screen";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,8 +11,8 @@ export default function Router() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={AccountScreen} />
+        <Tab.Screen name="Dashboard" component={DashboardScreen} />
+        <Tab.Screen name="Movies" component={MoviesScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

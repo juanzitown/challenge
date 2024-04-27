@@ -2,15 +2,15 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import useMovies from "../../api/use-movies";
 
-type HomeScreenProps = {};
+type DashboardScreenProps = {};
 
-export default function HomeScreen(props: HomeScreenProps) {
+export default function DashboardScreen(props: DashboardScreenProps) {
   const { data, error, isLoading } = useMovies();
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text>HOME PAGE!!</Text>
+      <Text>Dashboard!!</Text>
       {Boolean(error) && (
         <>
           <Text>Error fetching data:</Text>
