@@ -1,5 +1,5 @@
-import HomeScreen from "./screens/home/home-screen";
+import Router from "./router";
 
 export default function App() {
-  return <HomeScreen />;
+  return <Router />;
 }
