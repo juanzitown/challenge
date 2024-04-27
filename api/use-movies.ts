@@ -1,6 +1,8 @@
 import useSWR from "swr";
 
-export default function useMovies() {
+type UseMoviesProps = {};
+
+export default function useMovies(props: UseMoviesProps = {}) {
   const { data, error, isLoading } = useSWR(`/api/movies`, async () => {
     const response = await fetch(
       "https://tools.texoit.com/backend-java/api/movies"
