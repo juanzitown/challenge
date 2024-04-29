@@ -1,5 +1,6 @@
 import axios from "axios";
 import useSWR from "swr";
+import MovieType from "../types/movie-type";
 
 type UseMoviesProps = {
   page: number;
@@ -30,21 +31,14 @@ export default function useMovies(pageable: UseMoviesProps) {
   });
 
   return {
-    data,
+    data: data?.content,
     error,
     isLoading,
   };
 }
 
 type MoviesPayloadResponse = {
-  content: {
-    id: number;
-    year: number;
-    title: string;
-    studios: string[];
-    producers: string[];
-    winner: boolean;
-  }[];
+  content: MovieType[];
   pageable: {
     sort: { sorted: boolean; unsorted: boolean };
     pageSize: number;
