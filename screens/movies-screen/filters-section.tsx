@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import Picker from "../../components/picker";
 import Switch from "../../components/switch";
 
@@ -21,10 +21,7 @@ export default function FiltersSection() {
         onChange={setYearSelected}
         placeholder="Filter by Year"
       />
-      <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
-        <Text>Award?</Text>
-        <Switch value={winner} onChange={setWinner} />
-      </View>
+      <Switch label="Award?" value={winner} onChange={setWinner} />
     </View>
   );
 }
