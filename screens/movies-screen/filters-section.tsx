@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Picker from "../../components/picker";
 import Switch from "../../components/switch";
 
@@ -7,15 +7,7 @@ export default function FiltersSection() {
   const [yearSelected, setYearSelected] = useState();
   const [winner, setWinner] = useState();
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        gap: 16,
-        padding: 12,
-      }}
-    >
+    <View style={styles.container}>
       <Picker
         value={yearSelected}
         onChange={setYearSelected}
@@ -25,3 +17,13 @@ export default function FiltersSection() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    gap: 16,
+    padding: 12,
+  },
+});

@@ -31,7 +31,8 @@ export default function Picker({ value, onChange, placeholder }: PickerProps) {
 
 const styles = StyleSheet.create({
   picker: {
-    padding: 8,
+    paddingVertical: 7,
+    paddingHorizontal: 12,
   },
   container: {
     alignSelf: "flex-start",
