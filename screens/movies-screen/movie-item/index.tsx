@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import MovieType from "../../../types/movie-type";
+import Award from "./award";
 import Badge from "./badge";
 
 type MovieItemProps = {
@@ -9,11 +10,11 @@ type MovieItemProps = {
 export default function MovieItem({ movie }: MovieItemProps) {
   return (
     <View style={styles.card}>
+      {movie?.winner && <Award />}
+      <View style={styles.imagePlaceholder} />
       <View style={styles.titleLayout}>
         <Text style={styles.title}>{movie?.title}</Text>
         <Badge text={movie?.year} />
-        {/* <Badge text={movie?.id} /> */}
-        <Text>winner: {movie?.winner ? "true" : "false"}</Text>
       </View>
       <View style={{ marginTop: 12, gap: 4 }}>
         <Text style={styles.producers}>
@@ -29,6 +30,7 @@ export default function MovieItem({ movie }: MovieItemProps) {
 
 const styles = StyleSheet.create({
   card: {
+    position: "relative", // Needed for absolute positioning award
     backgroundColor: "#ffffff",
     borderRadius: 10,
     paddingVertical: 12,
@@ -40,6 +42,13 @@ const styles = StyleSheet.create({
       height: 2,
     },
     elevation: 2, // for android
+  },
+  imagePlaceholder: {
+    backgroundColor: "#cccccc",
+    width: "100%",
+    height: 120,
+    borderRadius: 8,
+    marginBottom: 10,
   },
   titleLayout: {
     flexDirection: "row",
