@@ -12,7 +12,7 @@ export default function MovieItem({ movie }: MovieItemProps) {
     <View style={styles.card}>
       {movie?.winner && <Award />}
       <View style={styles.imagePlaceholder} />
-      <View style={styles.titleLayout}>
+      <View style={styles.titleContainer}>
         <Text style={styles.title}>{movie?.title}</Text>
         <Badge text={movie?.year} />
       </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 10,
   },
-  titleLayout: {
+  titleContainer: {
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
