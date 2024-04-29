@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import useMovies from "../../api/use-movies";
-import Picker from "../../components/picker";
+import FiltersSection from "./filters-section";
 import MovieItem from "./movie-item";
 
 type MoviesScreenProps = {};
@@ -11,7 +11,7 @@ export default function MoviesScreen(props: MoviesScreenProps) {
   return (
     <ScrollView>
       <StatusBar style="auto" />
-      <Picker value={null} onChange={() => {}} />
+      <FiltersSection />
       <View style={styles.container}>
         <Text>Movies Screen</Text>
         {movies?.map?.((movie) => (
