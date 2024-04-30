@@ -18,6 +18,7 @@ export default function MoviesScreen(props: MoviesScreenProps) {
     fetchNextPage,
     isLoading,
     isLoadingMore,
+    isNonIdealState,
   } = useMovies(pageable);
   return (
     <ScrollView>
@@ -28,20 +29,26 @@ export default function MoviesScreen(props: MoviesScreenProps) {
           <MovieItem key={movie?.id} movie={movie} />
         ))}
         <View style={{ justifyContent: "center", alignItems: "center" }}>
-          {isLoading ? (
-            <Text style={{ color: "rgba(0, 0, 0, 0.56" }}>Loading...</Text>
+          {isNonIdealState ? (
+            <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
           ) : (
             <>
-              {isLoadingMore ? (
-                <Text style={{ color: "rgba(0, 0, 0, 0.56" }}>
-                  Loading More...
-                </Text>
+              {isLoading ? (
+                <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>Loading...</Text>
               ) : (
-                <Button
-                  intent="info"
-                  label="Load more"
-                  onPress={fetchNextPage}
-                />
+                <>
+                  {isLoadingMore ? (
+                    <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>
+                      Loading More...
+                    </Text>
+                  ) : (
+                    <Button
+                      intent="info"
+                      label="Load more"
+                      onPress={fetchNextPage}
+                    />
+                  )}
+                </>
               )}
             </>
           )}

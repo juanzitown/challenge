@@ -44,12 +44,15 @@ export default function useMovies(pageable: UseMoviesPageable) {
       return response?.data as MoviesPayloadResponse;
     });
 
+  const movies = data?.map?.((data) => data?.content).flat?.();
   const isLoadingMore =
     isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
+  const isNonIdealState = !isLoading && !isLoadingMore && !movies?.length;
 
   return {
-    data: data?.map?.((data) => data?.content).flat?.(),
+    data: movies,
     error,
+    isNonIdealState,
     isLoading,
     isLoadingMore,
     fetchNextPage: () => setSize(size + 1),
