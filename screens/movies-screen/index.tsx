@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import useMovies, { UseMoviesPageable } from "../../api/use-movies";
 import Button from "../../components/button";
 import FiltersSection from "./filters-section";
@@ -20,47 +20,59 @@ export default function MoviesScreen(props: MoviesScreenProps) {
     isLoadingMore,
     isNonIdealState,
   } = useMovies(pageable);
+
   return (
-    <ScrollView>
-      <StatusBar style="auto" />
-      <FiltersSection pageable={pageable} onChange={setPageable} />
-      <View style={styles.container}>
-        {movies?.map?.((movie) => (
-          <MovieItem key={movie?.id} movie={movie} />
-        ))}
-        <View style={{ justifyContent: "center", alignItems: "center" }}>
-          {isNonIdealState ? (
-            <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
-          ) : (
-            <>
-              {isLoading ? (
-                <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>Loading...</Text>
-              ) : (
-                <>
-                  {isLoadingMore ? (
-                    <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>
-                      Loading More...
-                    </Text>
-                  ) : (
-                    <Button
-                      intent="info"
-                      label="Load more"
-                      onPress={fetchNextPage}
-                    />
-                  )}
-                </>
-              )}
-            </>
-          )}
-        </View>
-      </View>
-    </ScrollView>
+    <FlatList
+      data={movies}
+      keyExtractor={(item) => item?.id?.toString?.()}
+      renderItem={({ item }) => <MovieItem key={item?.id} movie={item} />}
+      ListHeaderComponent={() => {
+        return (
+          <View>
+            <StatusBar style="auto" />
+            <FiltersSection pageable={pageable} onChange={setPageable} />
+          </View>
+        );
+      }}
+      ListFooterComponent={() => {
+        return (
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            {isNonIdealState ? (
+              <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
+            ) : (
+              <>
+                {isLoading ? (
+                  <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>
+                    Loading...
+                  </Text>
+                ) : (
+                  <>
+                    {isLoadingMore ? (
+                      <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>
+                        Loading More...
+                      </Text>
+                    ) : (
+                      <Button
+                        intent="info"
+                        label="Load more"
+                        onPress={fetchNextPage}
+                      />
+                    )}
+                  </>
+                )}
+              </>
+            )}
+          </View>
+        );
+      }}
+      contentContainerStyle={styles.container}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     gap: 24,
     padding: 16,
   },
