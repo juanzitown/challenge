@@ -1,19 +1,39 @@
-import { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { UseMoviesPageable } from "../../api/use-movies";
 import Picker from "../../components/picker";
 import Switch from "../../components/switch";
 
-export default function FiltersSection() {
-  const [yearSelected, setYearSelected] = useState();
-  const [winner, setWinner] = useState();
+type FiltersSectionProps = {
+  pageable: UseMoviesPageable;
+  onChange: (pageable: UseMoviesPageable) => void;
+};
+
+export default function FiltersSection({
+  pageable,
+  onChange,
+}: FiltersSectionProps) {
   return (
     <View style={styles.container}>
       <Picker
-        value={yearSelected}
-        onChange={setYearSelected}
         placeholder="Filter by Year"
+        value={pageable?.filters?.year}
+        onChange={(value) => {
+          onChange?.({
+            ...pageable,
+            filters: { ...pageable?.filters, year: value },
+          });
+        }}
       />
-      <Switch label="Award?" value={winner} onChange={setWinner} />
+      <Switch
+        label="Award?"
+        value={pageable?.filters?.winner}
+        onChange={(value) => {
+          onChange?.({
+            ...pageable,
+            filters: { ...pageable?.filters, winner: value },
+          });
+        }}
+      />
     </View>
   );
 }
