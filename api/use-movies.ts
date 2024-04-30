@@ -1,5 +1,5 @@
 import axios from "axios";
-import useSWR from "swr";
+import useSWRInfinite from "swr/infinite";
 import MovieType from "../types/movie-type";
 
 export type UseMoviesPageable = {
@@ -16,9 +16,19 @@ export type UseMoviesPageable = {
 };
 
 export default function useMovies(pageable: UseMoviesPageable) {
-  const { data, error, isLoading } = useSWR(
-    ["/api/movies", pageable],
-    async () => {
+  const getPage = (pageIndex, previousPageData) => {
+    if (
+      !!previousPageData?.totalPages &&
+      pageIndex >= previousPageData?.totalPages
+    ) {
+      return null;
+    }
+    return ["/api/movies", { ...pageable, page: pageIndex + 1 }];
+  };
+
+  const { data, error, size, setSize, isValidating, isLoading } =
+    useSWRInfinite(getPage, async (keys: any) => {
+      const pageable = keys[1] as UseMoviesPageable;
       const response = await axios.get(
         "https://tools.texoit.com/backend-java/api/movies",
         {
@@ -32,13 +42,17 @@ export default function useMovies(pageable: UseMoviesPageable) {
       );
 
       return response?.data as MoviesPayloadResponse;
-    }
-  );
+    });
+
+  const isLoadingMore =
+    isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
 
   return {
-    data: data?.content,
+    data: data?.map?.((data) => data?.content).flat?.(),
     error,
     isLoading,
+    isLoadingMore,
+    fetchNextPage: () => setSize(size + 1),
   };
 }
 
