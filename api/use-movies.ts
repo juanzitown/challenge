@@ -26,8 +26,9 @@ export default function useMovies(pageable: UseMoviesPageable) {
     return ["/api/movies", { ...pageable, page: pageIndex + 1 }];
   };
 
-  const { data, error, size, setSize, isValidating, isLoading } =
-    useSWRInfinite(getPage, async (keys: any) => {
+  const { data, error, size, setSize, isLoading } = useSWRInfinite(
+    getPage,
+    async (keys: any) => {
       const pageable = keys[1] as UseMoviesPageable;
       const response = await axios.get(
         "https://tools.texoit.com/backend-java/api/movies",
@@ -35,6 +36,7 @@ export default function useMovies(pageable: UseMoviesPageable) {
           params: {
             page: pageable?.page,
             size: pageable?.size,
+            winner: pageable?.filters?.winner || undefined,
             year: pageable?.filters?.year,
             projection: pageable?.filters?.projection,
           },
@@ -42,7 +44,8 @@ export default function useMovies(pageable: UseMoviesPageable) {
       );
 
       return response?.data as MoviesPayloadResponse;
-    });
+    }
+  );
 
   const movies = data?.map?.((data) => data?.content).flat?.();
   const isLoadingMore =
