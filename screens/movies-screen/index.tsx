@@ -1,13 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import useMovies, { UseMoviesPageable } from "../../api/use-movies";
+import Button from "../../components/button";
 import FiltersSection from "./filters-section";
 import MovieItem from "./movie-item";
 
@@ -32,7 +27,6 @@ export default function MoviesScreen(props: MoviesScreenProps) {
         {movies?.map?.((movie) => (
           <MovieItem key={movie?.id} movie={movie} />
         ))}
-
         <View style={{ justifyContent: "center", alignItems: "center" }}>
           {isLoading ? (
             <Text style={{ color: "rgba(0, 0, 0, 0.56" }}>Loading...</Text>
@@ -43,15 +37,11 @@ export default function MoviesScreen(props: MoviesScreenProps) {
                   Loading More...
                 </Text>
               ) : (
-                <TouchableHighlight
+                <Button
+                  intent="info"
+                  label="Load more"
                   onPress={fetchNextPage}
-                  underlayColor="#BBDEFB"
-                  hitSlop={{ top: 16, left: 16, right: 16, bottom: 16 }}
-                >
-                  <Text style={{ color: "#2196F3", padding: 8 }}>
-                    Load more ({movies?.length})
-                  </Text>
-                </TouchableHighlight>
+                />
               )}
             </>
           )}
