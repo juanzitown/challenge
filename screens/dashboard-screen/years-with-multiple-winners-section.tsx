@@ -5,7 +5,9 @@ export default function YearsWithMultipleWinnersSection() {
   const { data, error, isLoading } = useYearsWithMultipleWinners();
   return (
     <View style={styles.container}>
-      <Text>Years with multiple winners</Text>
+      <Text style={{ fontSize: 18, fontWeight: "500" }}>
+        Years with multiple winners
+      </Text>
       {data?.map?.((item) => (
         <View key={item?.year} style={{ flexDirection: "row", gap: 12 }}>
           <Text>{item?.year}</Text>
