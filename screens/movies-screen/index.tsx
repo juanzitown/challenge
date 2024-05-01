@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import useMovies, { UseMoviesPageable } from "../../api/use-movies";
+import useMovies, { UseMoviesPageableType } from "../../api/use-movies";
 import Button from "../../components/button";
 import FiltersSection from "./filters-section";
 import MovieItem from "./movie-item";
@@ -9,7 +9,7 @@ import MovieItem from "./movie-item";
 type MoviesScreenProps = {};
 
 export default function MoviesScreen(props: MoviesScreenProps) {
-  const [pageable, setPageable] = useState<UseMoviesPageable>({
+  const [pageable, setPageable] = useState<UseMoviesPageableType>({
     page: 1,
     size: 9,
   });

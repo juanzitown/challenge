@@ -3,7 +3,7 @@ import useSWR from "swr";
 
 export default function useIntervalBetweenWinsByProducer() {
   const { data, error, isLoading } = useSWR(
-    "/dashboard/years-with-multiple-winner",
+    "/dashboard/max-min-win-interval-for-producers",
     async () => {
       const response = await axios.get(
         "https://tools.texoit.com/backend-java/api/movies",
