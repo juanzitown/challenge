@@ -1,50 +1,69 @@
 import axios from "axios";
-import useSWR from "swr";
+import useSWRInfinite from "swr/infinite";
+import MovieType from "../types/movie-type";
 
-type UseMoviesProps = {
-  page: number;
-  size: number;
-  winner?: boolean;
-  year?: string;
-  projection?:
-    | "years-with-multiple-winners"
-    | "studios-with-win-count"
-    | "max-min-win-interval-for-producers";
+export type UseMoviesPageable = {
+  page?: number;
+  size?: number;
+  filters?: {
+    winner?: boolean;
+    year?: string;
+    projection?:
+      | "years-with-multiple-winners"
+      | "studios-with-win-count"
+      | "max-min-win-interval-for-producers";
+  };
 };
 
-export default function useMovies(pageable: UseMoviesProps) {
-  const { data, error, isLoading } = useSWR(`/api/movies`, async () => {
-    const response = await axios.get(
-      "https://tools.texoit.com/backend-java/api/movies",
-      {
-        params: {
-          page: pageable?.page,
-          size: pageable?.size,
-          year: pageable?.year,
-          projection: pageable?.projection,
-        },
-      }
-    );
+export default function useMovies(pageable: UseMoviesPageable) {
+  const getPage = (pageIndex, previousPageData) => {
+    if (
+      !!previousPageData?.totalPages &&
+      pageIndex >= previousPageData?.totalPages
+    ) {
+      return null;
+    }
+    return ["/api/movies", { ...pageable, page: pageIndex + 1 }];
+  };
 
-    return response?.data as MoviesPayloadResponse;
-  });
+  const { data, error, size, setSize, isLoading } = useSWRInfinite(
+    getPage,
+    async (keys: any) => {
+      const pageable = keys[1] as UseMoviesPageable;
+      const response = await axios.get(
+        "https://tools.texoit.com/backend-java/api/movies",
+        {
+          params: {
+            page: pageable?.page,
+            size: pageable?.size,
+            winner: pageable?.filters?.winner || undefined,
+            year: pageable?.filters?.year,
+            projection: pageable?.filters?.projection,
+          },
+        }
+      );
+
+      return response?.data as MoviesPayloadResponse;
+    }
+  );
+
+  const movies = data?.map?.((data) => data?.content).flat?.();
+  const isLoadingMore =
+    isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
+  const isNonIdealState = !isLoading && !isLoadingMore && !movies?.length;
 
   return {
-    data,
+    data: movies,
     error,
+    isNonIdealState,
     isLoading,
+    isLoadingMore,
+    fetchNextPage: () => setSize(size + 1),
   };
 }
 
 type MoviesPayloadResponse = {
-  content: {
-    id: number;
-    year: number;
-    title: string;
-    studios: string[];
-    producers: string[];
-    winner: boolean;
-  }[];
+  content: MovieType[];
   pageable: {
     sort: { sorted: boolean; unsorted: boolean };
     pageSize: number;
