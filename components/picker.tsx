@@ -19,7 +19,9 @@ export default function Picker({ value, onChange, placeholder }: PickerProps) {
     <View style={styles.container}>
       <RNPickerSelect
         value={value}
-        onValueChange={onChange}
+        onValueChange={(value) => {
+          onChange?.(value === placeholder ? undefined : value);
+        }}
         itemKey="value"
         style={{ viewContainer: styles.picker }}
         items={years}

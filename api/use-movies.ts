@@ -33,8 +33,7 @@ export default function useMovies(pageable: UseMoviesPageableType) {
             page: pageable?.page,
             size: pageable?.size,
             winner: pageable?.filters?.winner || undefined,
-            year: pageable?.filters?.year,
-            projection: pageable?.filters?.projection,
+            year: pageable?.filters?.year || undefined,
           },
         }
       );
