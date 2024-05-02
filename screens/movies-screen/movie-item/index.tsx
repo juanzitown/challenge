@@ -13,12 +13,12 @@ export default function MovieItem({ movie }: MovieItemProps) {
       {movie?.winner && <Award />}
       <View style={styles.imagePlaceholder} />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{movie?.title}</Text>
         <Badge text={movie?.year} />
+        <Text style={styles.title}>{movie?.title}</Text>
       </View>
       <View style={{ marginTop: 12, gap: 4 }}>
         <Text style={styles.producers}>
-          producers: {movie?.producers?.join?.(", ")}
+          Producers: {movie?.producers?.join?.(", ")}
         </Text>
         <Text style={styles.studios}>
           Studios: {movie?.studios?.join?.(", ")}
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
+    gap: 6,
     flexWrap: "wrap-reverse",
   },
   title: {
