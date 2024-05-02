@@ -22,7 +22,8 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 24,
-    padding: 16,
+    gap: 32,
+    paddingHorizontal: 16,
+    paddingVertical: 32,
   },
 });

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     position: "relative", // Needed for absolute positioning award
     backgroundColor: "#ffffff",
     borderRadius: 10,
-    paddingVertical: 8,
+    paddingVertical: 16,
     paddingHorizontal: 12,
     shadowColor: "#000000",
     shadowOpacity: 0.2,

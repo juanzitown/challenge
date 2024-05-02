@@ -1,4 +1,4 @@
-import { FontAwesome5 } from "@expo/vector-icons"; // Importing FontAwesome5 from expo vector icons
+import { FontAwesome5 } from "@expo/vector-icons";
 import { StyleSheet, View } from "react-native";
 
 type AwardProps = {};
@@ -7,7 +7,7 @@ export default function Award({}: AwardProps) {
   return (
     <View style={styles.container}>
       <View style={styles.iconContainer}>
-        <FontAwesome5 name="award" size={20} color="gold" />
+        <FontAwesome5 name="medal" size={20} color="gold" />
       </View>
       <View style={styles.awardCard}></View>
     </View>

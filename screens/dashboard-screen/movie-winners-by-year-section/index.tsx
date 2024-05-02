@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import useMovies, { UseMoviesPageableType } from "../../../api/use-movies";
 import Picker from "../../../components/picker";
 import MovieItem from "./movie-item";
@@ -15,7 +15,7 @@ export default function MovieWinnersByYearSection() {
   const { data, error, isLoading, isNonIdealState } = useMovies(pageable);
 
   return (
-    <View style={styles.container}>
+    <View style={{ gap: 8 }}>
       <View
         style={{
           flexDirection: "row",
@@ -60,7 +60,3 @@ export default function MovieWinnersByYearSection() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { gap: 12, padding: 8 },
-});

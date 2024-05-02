@@ -51,7 +51,7 @@ export default function IntervalBetweenWinsByProducerSection() {
           />
         </View>
       </View>
-      <View style={{ marginTop: 4, marginBottom: 16 }}>
+      <View style={{ marginVertical: 10 }}>
         <Divider />
       </View>
       <View style={{ gap: 4, paddingHorizontal: 6 }}>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     position: "relative", // Needed for absolute positioning award
     backgroundColor: "#ffffff",
     borderRadius: 10,
-    paddingVertical: 8,
+    paddingVertical: 16,
     paddingHorizontal: 12,
     shadowColor: "#000000",
     shadowOpacity: 0.2,
