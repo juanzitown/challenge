@@ -32,7 +32,7 @@ export default function YearsWithMultipleWinnersSection() {
             >
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 17,
                   color: "#424242",
                   fontWeight: "500",
                   minWidth: 80,
