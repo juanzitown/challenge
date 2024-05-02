@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
-import { UseMoviesPageable } from "../../api/use-movies";
+import { UseMoviesPageableType } from "../../api/use-movies";
 import Picker from "../../components/picker";
 import Switch from "../../components/switch";
 
 type FiltersSectionProps = {
-  pageable: UseMoviesPageable;
-  onChange: (pageable: UseMoviesPageable) => void;
+  pageable: UseMoviesPageableType;
+  onChange: (pageable: UseMoviesPageableType) => void;
 };
 
 export default function FiltersSection({
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
     gap: 16,
-    padding: 12,
+    paddingHorizontal: 12,
   },
 });

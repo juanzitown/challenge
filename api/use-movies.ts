@@ -2,20 +2,16 @@ import axios from "axios";
 import useSWRInfinite from "swr/infinite";
 import MovieType from "../types/movie-type";
 
-export type UseMoviesPageable = {
+export type UseMoviesPageableType = {
   page?: number;
   size?: number;
   filters?: {
     winner?: boolean;
     year?: string;
-    projection?:
-      | "years-with-multiple-winners"
-      | "studios-with-win-count"
-      | "max-min-win-interval-for-producers";
   };
 };
 
-export default function useMovies(pageable: UseMoviesPageable) {
+export default function useMovies(pageable: UseMoviesPageableType) {
   const getPage = (pageIndex, previousPageData) => {
     if (
       !!previousPageData?.totalPages &&
@@ -29,7 +25,7 @@ export default function useMovies(pageable: UseMoviesPageable) {
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
     getPage,
     async (keys: any) => {
-      const pageable = keys[1] as UseMoviesPageable;
+      const pageable = keys[1] as UseMoviesPageableType;
       const response = await axios.get(
         "https://tools.texoit.com/backend-java/api/movies",
         {
@@ -37,8 +33,7 @@ export default function useMovies(pageable: UseMoviesPageable) {
             page: pageable?.page,
             size: pageable?.size,
             winner: pageable?.filters?.winner || undefined,
-            year: pageable?.filters?.year,
-            projection: pageable?.filters?.projection,
+            year: pageable?.filters?.year || undefined,
           },
         }
       );

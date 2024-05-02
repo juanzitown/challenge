@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import MovieType from "../../../types/movie-type";
-import Award from "./award";
-import Badge from "./badge";
+import Badge from "../../movies-screen/movie-item/badge";
 
 type MovieItemProps = {
   movie: MovieType;
@@ -10,19 +9,10 @@ type MovieItemProps = {
 export default function MovieItem({ movie }: MovieItemProps) {
   return (
     <View style={styles.card}>
-      {movie?.winner && <Award />}
       <View style={styles.imagePlaceholder} />
       <View style={styles.titleContainer}>
         <Badge text={movie?.year} />
         <Text style={styles.title}>{movie?.title}</Text>
-      </View>
-      <View style={{ marginTop: 12, gap: 4 }}>
-        <Text style={styles.producers}>
-          Producers: {movie?.producers?.join?.(", ")}
-        </Text>
-        <Text style={styles.studios}>
-          Studios: {movie?.studios?.join?.(", ")}
-        </Text>
       </View>
     </View>
   );
@@ -30,11 +20,14 @@ export default function MovieItem({ movie }: MovieItemProps) {
 
 const styles = StyleSheet.create({
   card: {
-    position: "relative", // Needed for absolute positioning award
+    flexDirection: "row",
+    gap: 8,
+    alignContent: "flex-start",
+    justifyContent: "flex-start",
     backgroundColor: "#ffffff",
     borderRadius: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
     shadowColor: "#000000",
     shadowOpacity: 0.2,
     shadowOffset: {
@@ -45,29 +38,15 @@ const styles = StyleSheet.create({
   },
   imagePlaceholder: {
     backgroundColor: "#cccccc",
-    width: "100%",
-    height: 120,
+    width: 48,
+    height: 48,
     borderRadius: 8,
-    marginBottom: 10,
   },
   titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    flexWrap: "wrap-reverse",
+    gap: 4,
   },
   title: {
     fontWeight: "500",
-    fontSize: 18,
-  },
-  producers: {
-    fontWeight: "400",
-    color: "rgba(0, 0, 0, .56)",
-    fontSize: 12,
-  },
-  studios: {
-    fontWeight: "400",
-    color: "rgba(0, 0, 0, .56)",
-    fontSize: 12,
+    fontSize: 16,
   },
 });
