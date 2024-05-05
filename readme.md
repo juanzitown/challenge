@@ -59,6 +59,11 @@ O projeto está estruturado da seguinte forma:
 - expo: ~50.0.14
 - jest: ^29.7.0
 
+## Melhorias
+
+- Usar ENV vars para URL de API
+- Testes de payload de API
+
 ## Licença
 
 Este projeto está licenciado sob a MIT License.
