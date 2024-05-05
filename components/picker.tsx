@@ -19,6 +19,7 @@ export default function Picker({ value, onChange, placeholder }: PickerProps) {
     <View style={styles.container}>
       <RNPickerSelect
         value={value}
+        touchableWrapperProps={{ hitSlop: 16 }}
         onValueChange={(value) => {
           onChange?.(value === placeholder ? undefined : value);
         }}
