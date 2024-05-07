@@ -11,13 +11,13 @@ Para instalar o projeto, siga estas etapas:
 
 1. Clone o repositório.
 2. Execute `npm install` para instalar as dependências.
-3. Para rodar a aplicação nos dispostivos:
-   a. Execute `npm run ios` para iniciar o aplicativo em iOS.
-   b. Execute `npm run android` para iniciar o aplicativo em Android.
-   c. Execute `npm run web` para iniciar o aplicativo em navegador.
-4. Para rodar a aplicação em um dispositivo real (iOS ou Android):
-   a. Baixe o `Expo Go` na loja de aplicativos do dispositivo.
-   b. Execute `npm start` e leia o QRCode gerado no terminal com a camera do dispositivo.
+3. Para rodar a aplicação nos dispositivos:
+   - a. Execute `npm run ios` para iniciar o aplicativo em iOS.
+   - b. Execute `npm run android` para iniciar o aplicativo em Android.
+   - c. Execute `npm run web` para iniciar o aplicativo em navegador.
+5. Para rodar a aplicação em um dispositivo real (iOS ou Android):
+   - a. Baixe o `Expo Go` na loja de aplicativos do dispositivo.
+   - b. Execute `npm start` e leia o QRCode gerado no terminal com a camera do dispositivo.
 
 ## Testes
 
