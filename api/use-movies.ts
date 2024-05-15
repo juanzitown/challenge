@@ -19,7 +19,7 @@ export default function useMovies(pageable: UseMoviesPageableType) {
     ) {
       return null;
     }
-    return ["/api/movies", { ...pageable, page: pageIndex + 1 }];
+    return ["/api/movies", { ...pageable, page: pageIndex }];
   };
 
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
