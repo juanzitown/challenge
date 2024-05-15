@@ -3,6 +3,7 @@ import useSWRInfinite from "swr/infinite";
 import MovieType from "../types/movie-type";
 
 export type UseMoviesPageableType = {
+  enabled?: boolean;
   page?: number;
   size?: number;
   filters?: {
@@ -13,6 +14,9 @@ export type UseMoviesPageableType = {
 
 export default function useMovies(pageable: UseMoviesPageableType) {
   const getPage = (pageIndex, previousPageData) => {
+    if (pageable?.enabled === false) {
+      return null;
+    }
     if (
       !!previousPageData?.totalPages &&
       pageIndex >= previousPageData?.totalPages

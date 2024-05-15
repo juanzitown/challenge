@@ -6,6 +6,7 @@ import MovieItem from "./movie-item";
 
 export default function MovieWinnersByYearSection() {
   const [pageable, setPageable] = useState<UseMoviesPageableType>({
+    enabled: false,
     page: 0,
     size: 3,
     filters: {
@@ -33,6 +34,7 @@ export default function MovieWinnersByYearSection() {
           onChange={(value) => {
             setPageable({
               ...pageable,
+              enabled: !!value,
               filters: { ...pageable?.filters, year: value },
             });
           }}
