@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { UseMoviesPageableType } from "../../api/use-movies";
-import Picker from "../../components/picker";
-import Switch from "../../components/switch";
+import WinnerPicker from "../../components/winner-picker";
+import YearPicker from "../../components/year-picker";
 
 type FiltersSectionProps = {
   pageable: UseMoviesPageableType;
@@ -14,8 +14,8 @@ export default function FiltersSection({
 }: FiltersSectionProps) {
   return (
     <View style={styles.container}>
-      <Picker
-        placeholder="Filter by Year"
+      <YearPicker
+        placeholder="Filter by year"
         value={pageable?.filters?.year}
         onChange={(value) => {
           onChange?.({
@@ -24,8 +24,8 @@ export default function FiltersSection({
           });
         }}
       />
-      <Switch
-        label="Award?"
+      <WinnerPicker
+        placeholder="Filter by winner"
         value={pageable?.filters?.winner}
         onChange={(value) => {
           onChange?.({

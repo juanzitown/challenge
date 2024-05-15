@@ -10,7 +10,7 @@ type MoviesScreenProps = {};
 
 export default function MoviesScreen(props: MoviesScreenProps) {
   const [pageable, setPageable] = useState<UseMoviesPageableType>({
-    page: 1,
+    page: 0,
     size: 9,
   });
   const {

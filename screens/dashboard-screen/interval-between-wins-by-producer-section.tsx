@@ -15,45 +15,8 @@ export default function IntervalBetweenWinsByProducerSection() {
           marginBottom: 16,
         }}
       >
-        Interval between wins by Producer
+        Producers with longest and shortest interval between wins
       </Text>
-      <View style={{ gap: 4, paddingHorizontal: 6 }}>
-        <Text
-          style={{
-            fontSize: 12,
-            color: "rgba(0, 0, 0, .56)",
-          }}
-        >
-          Minimum
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 6,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 14,
-              color: "#424242",
-              fontWeight: "500",
-              flex: 1,
-            }}
-          >
-            {data?.min?.producer}
-          </Text>
-          <YearInterval
-            start={data?.min?.previousWinYear}
-            end={data?.min?.followingWinYear}
-            interval={data?.min?.interval}
-          />
-        </View>
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Divider />
-      </View>
       <View style={{ gap: 4, paddingHorizontal: 6 }}>
         <Text
           style={{
@@ -85,6 +48,43 @@ export default function IntervalBetweenWinsByProducerSection() {
             start={data?.max?.previousWinYear}
             end={data?.max?.followingWinYear}
             interval={data?.max?.interval}
+          />
+        </View>
+      </View>
+      <View style={{ marginVertical: 10 }}>
+        <Divider />
+      </View>
+      <View style={{ gap: 4, paddingHorizontal: 6 }}>
+        <Text
+          style={{
+            fontSize: 12,
+            color: "rgba(0, 0, 0, .56)",
+          }}
+        >
+          Minimum
+        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 6,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 14,
+              color: "#424242",
+              fontWeight: "500",
+              flex: 1,
+            }}
+          >
+            {data?.min?.producer}
+          </Text>
+          <YearInterval
+            start={data?.min?.previousWinYear}
+            end={data?.min?.followingWinYear}
+            interval={data?.min?.interval}
           />
         </View>
       </View>

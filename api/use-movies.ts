@@ -3,6 +3,7 @@ import useSWRInfinite from "swr/infinite";
 import MovieType from "../types/movie-type";
 
 export type UseMoviesPageableType = {
+  enabled?: boolean;
   page?: number;
   size?: number;
   filters?: {
@@ -13,13 +14,16 @@ export type UseMoviesPageableType = {
 
 export default function useMovies(pageable: UseMoviesPageableType) {
   const getPage = (pageIndex, previousPageData) => {
+    if (pageable?.enabled === false) {
+      return null;
+    }
     if (
       !!previousPageData?.totalPages &&
       pageIndex >= previousPageData?.totalPages
     ) {
       return null;
     }
-    return ["/api/movies", { ...pageable, page: pageIndex + 1 }];
+    return ["/api/movies", { ...pageable, page: pageIndex }];
   };
 
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
@@ -32,8 +36,8 @@ export default function useMovies(pageable: UseMoviesPageableType) {
           params: {
             page: pageable?.page,
             size: pageable?.size,
-            winner: pageable?.filters?.winner || undefined,
-            year: pageable?.filters?.year || undefined,
+            winner: pageable?.filters?.winner ?? undefined,
+            year: pageable?.filters?.year ?? undefined,
           },
         }
       );

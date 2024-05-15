@@ -22,7 +22,7 @@ export default function TopStudiosWithWinnersSection() {
           marginBottom: 16,
         }}
       >
-        Top 3 Studios with winners
+        Top 3 studios with winners
       </Text>
       <View style={{ gap: 8 }}>
         {data?.slice?.(0, 3)?.map?.((item, index) => (

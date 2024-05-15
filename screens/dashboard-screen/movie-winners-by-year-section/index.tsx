@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
 import useMovies, { UseMoviesPageableType } from "../../../api/use-movies";
-import Picker from "../../../components/picker";
+import YearPicker from "../../../components/year-picker";
 import MovieItem from "./movie-item";
 
 export default function MovieWinnersByYearSection() {
   const [pageable, setPageable] = useState<UseMoviesPageableType>({
-    page: 1,
+    enabled: false,
+    page: 0,
     size: 3,
     filters: {
       winner: true,
@@ -25,14 +26,15 @@ export default function MovieWinnersByYearSection() {
         }}
       >
         <Text style={{ fontSize: 18, fontWeight: "500" }}>
-          Movie Winners By Year
+          List movie winners by year
         </Text>
-        <Picker
+        <YearPicker
           placeholder="Filter by Year"
           value={pageable?.filters?.year}
           onChange={(value) => {
             setPageable({
               ...pageable,
+              enabled: !!value,
               filters: { ...pageable?.filters, year: value },
             });
           }}

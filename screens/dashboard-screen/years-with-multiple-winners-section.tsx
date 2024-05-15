@@ -15,7 +15,7 @@ export default function YearsWithMultipleWinnersSection() {
           marginBottom: 16,
         }}
       >
-        Years with multiple winners
+        List years with multiple winners
       </Text>
       <View style={{ gap: 8 }}>
         {data?.map?.((item, index) => (

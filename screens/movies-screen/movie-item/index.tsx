@@ -11,18 +11,14 @@ export default function MovieItem({ movie }: MovieItemProps) {
   return (
     <View style={styles.card}>
       {movie?.winner && <Award />}
-      <View style={styles.imagePlaceholder} />
+      <View style={styles.imagePlaceholder}>
+        <View style={styles.badgeId}>
+          <Text style={styles.badgeIdText}>ID: {movie?.id}</Text>
+        </View>
+      </View>
       <View style={styles.titleContainer}>
         <Badge text={movie?.year} />
         <Text style={styles.title}>{movie?.title}</Text>
-      </View>
-      <View style={{ marginTop: 12, gap: 4 }}>
-        <Text style={styles.producers}>
-          Producers: {movie?.producers?.join?.(", ")}
-        </Text>
-        <Text style={styles.studios}>
-          Studios: {movie?.studios?.join?.(", ")}
-        </Text>
       </View>
     </View>
   );
@@ -43,9 +39,24 @@ const styles = StyleSheet.create({
     },
     elevation: 2, // for android
   },
+  badgeId: {
+    alignSelf: "center",
+    alignItems: "center",
+    backgroundColor: "#777777", // Dark Gray
+    paddingVertical: 4,
+    minWidth: 40,
+    paddingHorizontal: 8,
+    borderRadius: 20,
+  },
+  badgeIdText: {
+    color: "#fff",
+    fontSize: 13,
+    fontWeight: "bold",
+  },
   imagePlaceholder: {
     backgroundColor: "#cccccc",
     width: "100%",
+    justifyContent: "center",
     height: 120,
     borderRadius: 8,
     marginBottom: 10,
@@ -59,15 +70,5 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "500",
     fontSize: 18,
-  },
-  producers: {
-    fontWeight: "400",
-    color: "rgba(0, 0, 0, .56)",
-    fontSize: 12,
-  },
-  studios: {
-    fontWeight: "400",
-    color: "rgba(0, 0, 0, .56)",
-    fontSize: 12,
   },
 });
