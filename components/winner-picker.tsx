@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
 type WinnerPickerProps = {
@@ -43,11 +43,14 @@ export default function WinnerPicker({
 
 const styles = StyleSheet.create({
   picker: {
-    paddingVertical: 7,
-    paddingHorizontal: 12,
+    ...Platform.select({
+      ios: {
+        paddingVertical: 7,
+        paddingHorizontal: 12,
+      },
+    }),
   },
   container: {
-    alignSelf: "flex-start",
     backgroundColor: "#ffffff",
     borderRadius: 10,
     shadowColor: "#000000",
@@ -56,6 +59,14 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    elevation: 2, // for android
+    ...Platform.select({
+      ios: {
+        alignSelf: "flex-start",
+      },
+      android: {
+        flex: 1,
+        elevation: 2,
+      },
+    }),
   },
 });
