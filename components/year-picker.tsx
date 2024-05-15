@@ -8,20 +8,32 @@ const years = Array.from({ length: 130 }, (_, index) => {
   return { label: value, value: value };
 }); // Generate years from current to 1895
 
-type PickerProps = {
+type YearPickerProps = {
   value: any;
   onChange: (value: any) => void;
   placeholder?: string;
 };
 
-export default function Picker({ value, onChange, placeholder }: PickerProps) {
+export default function YearPicker({
+  value,
+  onChange,
+  placeholder,
+}: YearPickerProps) {
   return (
     <View style={styles.container}>
       <RNPickerSelect
         value={value}
         touchableWrapperProps={{ hitSlop: 16 }}
         onValueChange={(value) => {
-          onChange?.(value === placeholder ? undefined : value);
+          switch (value) {
+            case placeholder:
+            case "null":
+            case "undefined":
+              onChange?.(undefined);
+              break;
+            default:
+              onChange?.(value);
+          }
         }}
         itemKey="value"
         style={{ viewContainer: styles.picker }}

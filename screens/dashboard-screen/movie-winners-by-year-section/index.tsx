@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
 import useMovies, { UseMoviesPageableType } from "../../../api/use-movies";
-import Picker from "../../../components/picker";
+import YearPicker from "../../../components/year-picker";
 import MovieItem from "./movie-item";
 
 export default function MovieWinnersByYearSection() {
@@ -28,7 +28,7 @@ export default function MovieWinnersByYearSection() {
         <Text style={{ fontSize: 18, fontWeight: "500" }}>
           List movie winners by year
         </Text>
-        <Picker
+        <YearPicker
           placeholder="Filter by Year"
           value={pageable?.filters?.year}
           onChange={(value) => {
