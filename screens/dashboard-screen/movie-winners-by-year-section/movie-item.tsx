@@ -9,7 +9,11 @@ type MovieItemProps = {
 export default function MovieItem({ movie }: MovieItemProps) {
   return (
     <View style={styles.card}>
-      <View style={styles.imagePlaceholder} />
+      <View style={styles.imagePlaceholder}>
+        <View style={styles.badgeId}>
+          <Text style={styles.badgeIdText}>{movie?.id}</Text>
+        </View>
+      </View>
       <View style={styles.titleContainer}>
         <Badge text={movie?.year} />
         <Text style={styles.title}>{movie?.title}</Text>
@@ -36,11 +40,26 @@ const styles = StyleSheet.create({
     },
     elevation: 2, // for android
   },
+  badgeId: {
+    alignSelf: "center",
+    alignItems: "center",
+    backgroundColor: "#777777", // Dark Gray
+    paddingVertical: 4,
+    minWidth: 40,
+    paddingHorizontal: 8,
+    borderRadius: 20,
+  },
+  badgeIdText: {
+    color: "#fff",
+    fontSize: 13,
+    fontWeight: "bold",
+  },
   imagePlaceholder: {
     backgroundColor: "#cccccc",
-    width: 48,
+    width: 64,
     height: 48,
     borderRadius: 8,
+    justifyContent: "center",
   },
   titleContainer: {
     gap: 4,
