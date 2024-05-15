@@ -25,7 +25,7 @@ export default function MovieWinnersByYearSection() {
         }}
       >
         <Text style={{ fontSize: 18, fontWeight: "500" }}>
-          Movie Winners By Year
+          List movie winners by year
         </Text>
         <Picker
           placeholder="Filter by Year"
