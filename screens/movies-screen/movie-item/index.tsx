@@ -9,7 +9,7 @@ type MovieItemProps = {
 
 export default function MovieItem({ movie }: MovieItemProps) {
   return (
-    <View style={styles.card}>
+    <View style={styles.card} testID={`movie-item-${movie?.id}`}>
       {movie?.winner && <Award />}
       <View style={styles.imagePlaceholder}>
         <View style={styles.badgeId}>

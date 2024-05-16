@@ -20,6 +20,8 @@
     "@react-native-picker/picker": "2.6.1",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^12.5.0",
     "@types/react": "~18.2.45",
     "axios": "^1.6.8",
     "expo": "~50.0.14",
