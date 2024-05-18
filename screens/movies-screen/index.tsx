@@ -38,21 +38,22 @@ export default function MoviesScreen(props: MoviesScreenProps) {
         return (
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             {isNonIdealState ? (
-              <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
+              <Text testID="non-ideal-state" style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
             ) : (
               <>
                 {isLoading ? (
-                  <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>
+                  <Text testID="loading" style={{ color: "rgba(0, 0, 0, 0.56)" }}>
                     Loading...
                   </Text>
                 ) : (
                   <>
                     {isLoadingMore ? (
-                      <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>
+                      <Text testID="loading-more" style={{ color: "rgba(0, 0, 0, 0.56)" }}>
                         Loading More...
                       </Text>
                     ) : (
                       <Button
+                      testID="load-more"
                         intent="info"
                         label="Load more"
                         onPress={fetchNextPage}

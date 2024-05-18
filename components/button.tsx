@@ -4,11 +4,13 @@ type ButtonProps = {
   onPress: () => void;
   label: string;
   intent: "info";
+  testID?: string
 };
 
-export default function Button({ onPress, intent, label }: ButtonProps) {
+export default function Button({ onPress, intent, label, testID }: ButtonProps) {
   return (
     <TouchableHighlight
+      testID={testID}
       onPress={onPress}
       underlayColor={intentMap[intent]?.bgActiveColor}
       hitSlop={{ top: 16, left: 16, right: 16, bottom: 16 }}
