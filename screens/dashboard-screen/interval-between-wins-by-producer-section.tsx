@@ -6,7 +6,7 @@ import YearInterval from "../../components/year-interval";
 export default function IntervalBetweenWinsByProducerSection() {
   const { data, error, isLoading } = useIntervalBetweenWinsByProducer();
   return (
-    <View style={styles.card}>
+    <View style={styles.card} testID="interval-between-wins-by-producer-section">
       <Text
         style={{
           fontSize: 18,

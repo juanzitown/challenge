@@ -16,7 +16,7 @@ export default function MovieWinnersByYearSection() {
   const { data, error, isLoading, isNonIdealState } = useMovies(pageable);
 
   return (
-    <View style={{ gap: 8 }}>
+    <View style={{ gap: 8 }} testID="movie-winners-by-year-section">
       <View
         style={{
           flexDirection: "row",
@@ -45,7 +45,7 @@ export default function MovieWinnersByYearSection() {
       ))}
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         {isNonIdealState ? (
-          <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
+          <Text testID="non-ideal-state" style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
         ) : (
           <>
             {isLoading && (

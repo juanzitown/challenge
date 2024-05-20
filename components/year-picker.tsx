@@ -22,6 +22,7 @@ export default function YearPicker({
   return (
     <View style={styles.container}>
       <RNPickerSelect
+        textInputProps={{ testID: "year-picker" }}
         value={value}
         touchableWrapperProps={{ hitSlop: 16 }}
         onValueChange={(value) => {

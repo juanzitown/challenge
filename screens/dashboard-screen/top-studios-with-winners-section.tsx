@@ -13,7 +13,7 @@ const rankingData = [
 export default function TopStudiosWithWinnersSection() {
   const { data, error, isLoading } = useTopStudiosWithWinners();
   return (
-    <View style={styles.card}>
+    <View style={styles.card} testID="top-studios-with-winners-section">
       <Text
         style={{
           fontSize: 18,

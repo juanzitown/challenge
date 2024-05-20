@@ -16,6 +16,7 @@ export default function WinnerPicker({
   return (
     <View style={styles.container}>
       <RNPickerSelect
+        textInputProps={{ testID: "winner-picker" }}
         value={value}
         touchableWrapperProps={{ hitSlop: 16 }}
         onValueChange={(value) => {

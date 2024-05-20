@@ -6,7 +6,7 @@ import Divider from "../../components/divider";
 export default function YearsWithMultipleWinnersSection() {
   const { data, error, isLoading } = useYearsWithMultipleWinners();
   return (
-    <View style={styles.card}>
+    <View style={styles.card} testID="years-with-multiple-winners-section">
       <Text
         style={{
           fontSize: 18,
