@@ -10,7 +10,7 @@ javascript, typescript e API requests.
 Para instalar o projeto, siga estas etapas:
 
 1. Clone o repositório.
-2. Execute `npm install` para instalar as dependências.
+2. Execute `npm install --legacy-peer-deps` para instalar as dependências.
 3. Para rodar a aplicação nos dispositivos:
    - a. Execute `npm run ios` para iniciar o aplicativo em iOS.
    - b. Execute `npm run android` para iniciar o aplicativo em Android.
@@ -23,7 +23,7 @@ Para instalar o projeto, siga estas etapas:
 
 Para executar os testes, siga estas etapas:
 
-1. Execute `npm install` para instalar as dependências.
+1. Execute `npm install --legacy-peer-deps` para instalar as dependências.
 2. Execute `npm test` para rodar os testes disponíveis.
 
 ## Uso
