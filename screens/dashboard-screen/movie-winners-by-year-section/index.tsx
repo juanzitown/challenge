@@ -16,7 +16,7 @@ export default function MovieWinnersByYearSection() {
   const { data, error, isLoading, isNonIdealState } = useMovies(pageable);
 
   return (
-    <View style={{ gap: 8 }}>
+    <View style={{ gap: 8 }} testID="movie-winners-by-year-section">
       <View
         style={{
           flexDirection: "row",
