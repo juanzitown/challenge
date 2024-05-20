@@ -1,8 +1,8 @@
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Fragment } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import useTopStudiosWithWinners from "../../api/use-top-studios-with-winners";
-import Divider from "../../components/divider";
+import useTopStudiosWithWinners from "@/api/use-top-studios-with-winners";
+import Divider from "@/components/divider";
 
 const rankingData = [
   { icon: "medal", color: "#FFD700" }, // Gold color

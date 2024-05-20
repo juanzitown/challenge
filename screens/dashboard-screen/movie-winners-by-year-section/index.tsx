@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
-import useMovies, { UseMoviesPageableType } from "../../../api/use-movies";
-import YearPicker from "../../../components/year-picker";
+import useMovies, { UseMoviesPageableType } from "@/api/use-movies";
+import YearPicker from "@/components/year-picker";
 import MovieItem from "./movie-item";
 
 export default function MovieWinnersByYearSection() {
