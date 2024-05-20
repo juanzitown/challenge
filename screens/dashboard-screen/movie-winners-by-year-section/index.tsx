@@ -45,7 +45,7 @@ export default function MovieWinnersByYearSection() {
       ))}
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         {isNonIdealState ? (
-          <Text style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
+          <Text testID="non-ideal-state" style={{ color: "rgba(0, 0, 0, 0.56)" }}>No data!</Text>
         ) : (
           <>
             {isLoading && (
