@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import useMovies, { UseMoviesPageableType } from "../../api/use-movies";
-import Button from "../../components/button";
+import useMovies, { UseMoviesPageableType } from "@/api/use-movies";
+import Button from "@/components/button";
 import FiltersSection from "./filters-section";
 import MovieItem from "./movie-item";
 

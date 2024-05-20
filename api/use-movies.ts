@@ -1,6 +1,6 @@
 import axios from "axios";
 import useSWRInfinite from "swr/infinite";
-import MovieType from "../types/movie-type";
+import MovieType from "@/types/movie-type";
 
 export type UseMoviesPageableType = {
   enabled?: boolean;

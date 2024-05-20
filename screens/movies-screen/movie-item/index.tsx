@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import MovieType from "../../../types/movie-type";
+import MovieType from "@/types/movie-type";
 import Award from "./award";
 import Badge from "./badge";
 

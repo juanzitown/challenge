@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
-import { UseMoviesPageableType } from "../../api/use-movies";
-import WinnerPicker from "../../components/winner-picker";
-import YearPicker from "../../components/year-picker";
+import { UseMoviesPageableType } from "@/api/use-movies";
+import WinnerPicker from "@/components/winner-picker";
+import YearPicker from "@/components/year-picker";
 
 type FiltersSectionProps = {
   pageable: UseMoviesPageableType;

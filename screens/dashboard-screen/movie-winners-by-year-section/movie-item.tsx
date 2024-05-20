@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
-import MovieType from "../../../types/movie-type";
-import Badge from "../../movies-screen/movie-item/badge";
+import MovieType from "@/types/movie-type";
+import Badge from "@/screens/movies-screen/movie-item/badge";
 
 type MovieItemProps = {
   movie: MovieType;

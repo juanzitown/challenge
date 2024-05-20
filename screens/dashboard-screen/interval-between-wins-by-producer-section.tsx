@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
-import useIntervalBetweenWinsByProducer from "../../api/use-interval-between-wins-by-producer";
-import Divider from "../../components/divider";
-import YearInterval from "../../components/year-interval";
+import useIntervalBetweenWinsByProducer from "@/api/use-interval-between-wins-by-producer";
+import Divider from "@/components/divider";
+import YearInterval from "@/components/year-interval";
 
 export default function IntervalBetweenWinsByProducerSection() {
   const { data, error, isLoading } = useIntervalBetweenWinsByProducer();

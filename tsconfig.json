@@ -1,4 +1,11 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+  },
+  "include": ["api", "components", "screens", "types"],
+  "exclude": ["node_modules"],
   "extends": "expo/tsconfig.base"
 }

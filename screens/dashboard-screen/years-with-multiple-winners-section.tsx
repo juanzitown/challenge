@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import useYearsWithMultipleWinners from "../../api/use-years-with-multiple-winners";
-import Divider from "../../components/divider";
+import useYearsWithMultipleWinners from "@/api/use-years-with-multiple-winners";
+import Divider from "@/components/divider";
 
 export default function YearsWithMultipleWinnersSection() {
   const { data, error, isLoading } = useYearsWithMultipleWinners();
